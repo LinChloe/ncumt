@@ -24,6 +24,11 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+use App\Http\Controllers\TeamJudgementController;
+
+Route::get('/teamJudgement', [TeamJudgementController::class, 'index'])->name('teamJudgement');
+Route::post('/teamJudgement', [TeamJudgementController::class, 'store'])->name('teamJudgement.store');
+
 
 Route::fallback(function () {
     $randomNumber = rand(1, 4) . '';
