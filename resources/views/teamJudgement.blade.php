@@ -16,7 +16,7 @@
                             <input type="text" name="search" value="{{ request('search') }}" class="form-control" placeholder="搜尋隊伍名稱">
                         </div>
                     </form>
-                    <form method="POST" action="{{ route('teamJudgement.store') }}">
+                    <form method="POST" action="{{ route('teamJudgement.store') }}" id="selectionForm">
                         @csrf
                         <table class="table table-bordered">
                             <thead>
@@ -31,18 +31,19 @@
                             @foreach($judgements as $judgement)
                                 <tr>
                                     <td>
-                                        <input type="checkbox" name="selected[]" value="{{ $judgement->id }}">
+                                        <input type="radio" name="selected" value="{{ $judgement->id }}">
                                     </td>
                                     <td>{{ $judgement->name }}</td>
-                                    <td>{{ $judgement->difficulty }}</td>
+                                    <td>{{ $judgement->result_level }}</td>
                                     <td>{{ $judgement->updated_at->format('Y-m-d H:i:s') }}</td>
                                 </tr>
                             @endforeach
                             </tbody>
                         </table>
-                        <button type="submit" class="btn btn-primary">提交選擇</button>
+                        <button type="submit" class="btn btn-primary">提交選擇</button> <!-- 使用 mb-2 類 -->
+                        <a href="http://localhost/judgement" class="btn btn-secondary" target="_blank">自行評分</a> <!-- 使用 mb-2 類 -->
                     </form>
-                    {{ $judgements->links() }} <!-- For pagination -->
+                    {{ $judgements->links('vendor.pagination.bootstrap-4') }}
                 </div>
             </div>
         </div>
