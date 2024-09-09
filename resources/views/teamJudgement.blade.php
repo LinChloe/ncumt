@@ -8,12 +8,15 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <h1 class="page-title">選擇隊伍難度</h1>
-                    <p>過去隊伍難度的評分紀錄。</p>
+                    <p>請選擇隊伍難度，若未創建，請先點選『自行評分』</p>
                 </div>
                 <div class="col-lg-12">
-                    <form method="GET" action="{{ route('teamJudgement') }}">
-                        <div class="mb-3">
+                    <form method="GET" action="{{ route('teamJudgement') }}" class="mb-3">
+                        <div class="input-group">
+                            <!-- 搜尋框 -->
                             <input type="text" name="search" value="{{ request('search') }}" class="form-control" placeholder="搜尋隊伍名稱">
+                            <!-- 搜尋按鈕，放置在輸入框右側 -->
+                            <button class="btn btn-primary" type="submit"><span class="bi-search"></span></button>
                         </div>
                     </form>
                     <form method="POST" action="{{ route('teamJudgement.store') }}" id="selectionForm">
@@ -23,8 +26,9 @@
                             <tr>
                                 <th>選擇</th>
                                 <th>隊伍名稱</th>
-                                <th>難度</th>
-                                <th>更新時間</th>
+                                <th>難度等級</th>
+                                <th>難度總分</th>
+                                <th>天數</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -35,7 +39,8 @@
                                     </td>
                                     <td>{{ $judgement->name }}</td>
                                     <td>{{ $judgement->result_level }}</td>
-                                    <td>{{ $judgement->updated_at->format('Y-m-d H:i:s') }}</td>
+                                    <td>{{ $judgement->score }}</td>
+                                    <td>{{ $judgement->normal_day + $judgement->abnormal_day }}</td>
                                 </tr>
                             @endforeach
                             </tbody>

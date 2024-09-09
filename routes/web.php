@@ -26,7 +26,7 @@ use Illuminate\Support\Facades\Route;
 */
 use App\Http\Controllers\TeamJudgementController;
 
-Route::get('/tripChoice', [TeamJudgementController::class, 'index'])->name('teamJudgement');
+Route::get('/trip/choose', [TeamJudgementController::class, 'index'])->name('teamJudgement');
 Route::post('/teamJudgement', [TeamJudgementController::class, 'store'])->name('teamJudgement.store');
 
 
