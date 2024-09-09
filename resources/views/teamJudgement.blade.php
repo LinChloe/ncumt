@@ -43,7 +43,10 @@
                         <button type="submit" class="btn btn-primary">提交選擇</button> <!-- 使用 mb-2 類 -->
                         <a href="http://localhost/judgement" class="btn btn-secondary" target="_blank">自行評分</a> <!-- 使用 mb-2 類 -->
                     </form>
-                    {{ $judgements->links('vendor.pagination.bootstrap-4') }}
+                    <!-- 分頁置中 -->
+                    <div class="d-flex justify-content-center mt-3">
+                        {{ $judgements->links('vendor.pagination.bootstrap-4') }}
+                    </div>
                 </div>
             </div>
         </div>

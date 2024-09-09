@@ -26,7 +26,7 @@ use Illuminate\Support\Facades\Route;
 */
 use App\Http\Controllers\TeamJudgementController;
 
-Route::get('/teamJudgement', [TeamJudgementController::class, 'index'])->name('teamJudgement');
+Route::get('/tripChoice', [TeamJudgementController::class, 'index'])->name('teamJudgement');
 Route::post('/teamJudgement', [TeamJudgementController::class, 'store'])->name('teamJudgement.store');
 
 
@@ -138,7 +138,7 @@ Route::middleware(['checkRole'])->group(function () {
     Route::get('/faq/edit/{id}', [FaqController::class, 'edit'])->name('faq.edit');
     Route::put('/faq/edit/{id}', [FaqController::class, 'update'])->name('faq.update');
     Route::delete('/faq/edit/{id}', [FaqController::class, 'destroy'])->name('faq.destroy');
-    
+
     // user
     Route::get('/user/list', [UserController::class, 'index'])->name('user.list');
     Route::post('/users/updateRole/{id}', [UserController::class, 'updateRole'])->name('user.updateRole');
